@@ -14,4 +14,18 @@ mongoose.connect("mongodb://localhost:27017/loginsystem", {
     useUnifiedTopology: true,
 });
 
-app
+// Middleware
+app.engine('hbs', hbs({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname + +'/public'));
+app.use(session({
+    secret: "verygoodsecret",
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+//passport.json
+app.use(passport.initialize());
+app.set(passport.session());
