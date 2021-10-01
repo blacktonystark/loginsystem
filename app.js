@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 // mongodb connect
-mongoose.connect("mongodb://localhost:27017/node-auth-yt", {
+mongoose.connect("mongodb://localhost:27017/loginsystem", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
