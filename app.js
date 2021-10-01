@@ -1,7 +1,7 @@
 // declarations
 const express = require('express');
 const session = require('express-session');
-const exphbs = require('express-handlebars');
+const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
@@ -29,9 +29,9 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 // Middleware
-app.engine('.hbs', exphbs({ extname: '.hbs' }));
-app.set('view engine', 'hbs');
-app.use(express.static(__dirname + +'/public'));
+app.engine('.hbs', hbs({ extname: '.hbs' }));
+app.set('view engine', '.hbs');
+app.use(express.static(__dirname + '/public'));
 app.use(session({
     secret: "verygoodsecret",
     resave: false,
